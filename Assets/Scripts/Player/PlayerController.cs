@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Triggers")]
+    public BoxCollider2D GroundChecker;
+
     [Header("Movement variables")]
     [HideInInspector] public Rigidbody2D rb;
     private InputAction movement;
@@ -17,7 +20,11 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public int jumpsLeft;
     public float jumpForce = 5f;
     
-
+    /**
+    * Private Variables
+    **/
+    private bool groundTouched = false;
+    private bool isJumping = false;
 
     private void Awake()
     {
@@ -37,10 +44,18 @@ public class PlayerController : MonoBehaviour
         InputManager.Instance.OnJump -= DoJump;
     }
 
+    private void Update() {
+    }
 
     private void FixedUpdate()
     {
         DoMovement(movement.ReadValue<Vector2>());
+
+        //Resets the jump if the following conditions are met
+        //No more jumps, You touched grass(the ground), and you're not jumping already
+        if(jumpsLeft == 0 && groundTouched && !isJumping){
+            ResetJumpCounter();
+        }
     }
 
 
@@ -62,12 +77,41 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        // Creates the jump vector and decrements jumpsLeft
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        // jumpsLeft--;
+        jumpsLeft--;
+
+        //Sets it so that it's now jumping you hoppity fuck
+        isJumping = true;
     }
 
-    public void ResetJumpCounter()
-    {
+    public void ResetJumpCounter(){
         jumpsLeft = maximumJumps;
     }
+
+    /**
+    Checks if it enters the trigger, it does 2 things
+    ground touched will become true
+        - This allows the player to reset their jumps
+    is jumping will become false
+        - This will also allow the player to reset their
+        jumps
+        -except this is what stops them from double jumping
+        -i hate logic and code
+    **/
+    private void OnTriggerEnter2D(Collider2D other) {
+        groundTouched = true;
+        isJumping = false;
+    }
+
+    /**
+    Checks if it exits the trigger, it does 1 thing
+    groudn touched will be false
+        - basically the player can't reset their jumps
+        because they're in the air lmaoo weeewoo
+    **/
+    private void OnTriggerExit2D(Collider2D other) {
+        groundTouched = false;
+    }
+
 }
