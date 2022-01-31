@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [Header("Triggers")]
     public BoxCollider2D GroundChecker;
 
+
     [Header("Movement variables")]
     [HideInInspector] public Rigidbody2D rb;
     private InputAction movement;
@@ -19,13 +20,11 @@ public class PlayerController : MonoBehaviour
     public int maximumJumps = 1;
     [HideInInspector] public int jumpsLeft;
     public float jumpForce = 5f;
-    
-    /**
-    * Private Variables
-    **/
     private bool groundTouched = false;
     private bool isJumping = false;
 
+
+    #region Initialization Functions
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,8 +42,13 @@ public class PlayerController : MonoBehaviour
     {
         InputManager.Instance.OnJump -= DoJump;
     }
+    #endregion
 
-    private void Update() {
+
+    #region Update Functions
+    private void Update()
+    {
+
     }
 
     private void FixedUpdate()
@@ -53,12 +57,15 @@ public class PlayerController : MonoBehaviour
 
         //Resets the jump if the following conditions are met
         //No more jumps, You touched grass(the ground), and you're not jumping already
-        if(jumpsLeft == 0 && groundTouched && !isJumping){
+        if (jumpsLeft == 0 && groundTouched && !isJumping)
+        {
             ResetJumpCounter();
         }
     }
+    #endregion
 
 
+    #region Movement Functions
     private void DoMovement(Vector2 input)
     {
         float horizontalInput = input.x;
@@ -88,7 +95,10 @@ public class PlayerController : MonoBehaviour
     public void ResetJumpCounter(){
         jumpsLeft = maximumJumps;
     }
+    #endregion
 
+
+    #region Grounded/In Air Triggers
     /**
     Checks if it enters the trigger, it does 2 things
     ground touched will become true
@@ -99,7 +109,8 @@ public class PlayerController : MonoBehaviour
         -except this is what stops them from double jumping
         -i hate logic and code
     **/
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         groundTouched = true;
         isJumping = false;
     }
@@ -110,8 +121,9 @@ public class PlayerController : MonoBehaviour
         - basically the player can't reset their jumps
         because they're in the air lmaoo weeewoo
     **/
-    private void OnTriggerExit2D(Collider2D other) {
+    private void OnTriggerExit2D(Collider2D other)
+    {
         groundTouched = false;
     }
-
+    #endregion
 }

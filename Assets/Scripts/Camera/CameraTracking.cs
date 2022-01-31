@@ -24,13 +24,11 @@ public class CameraTracking : MonoBehaviour
 
     /**
     **/
-    private void TrackTarget(){
-        Vector3 targetPos = targetToTrack.position;
-        targetPos.x = 0;
-        targetPos.z = -10;
+    private void TrackTarget()
+    {
+        Vector3 targetPos = new Vector3(0, targetToTrack.position.y, -10);
         Vector3 currentPos = transform.position;
         Vector3 newPos = Vector3.Lerp(currentPos, targetPos, cameraSmoothness);
         transform.position = newPos;
-
     }
 }
