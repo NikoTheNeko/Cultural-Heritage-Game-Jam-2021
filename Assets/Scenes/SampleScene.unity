@@ -12601,6 +12601,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: flipBlackAndWhite
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: levelParentObject
+      value: 
+      objectReference: {fileID: 1733246795}
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: sectionsToClone.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: sectionsToClone.Array.data[0]
+      value: 
+      objectReference: {fileID: 1733246795}
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: sectionsToClone.Array.data[1]
+      value: 
+      objectReference: {fileID: 699485014}
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: sectionsToClone.Array.data[2]
+      value: 
+      objectReference: {fileID: 37714878}
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: lastFlippedSections.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: lastFlippedSections.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: lastFlippedSections.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164705210059143156, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
+      propertyPath: lastFlippedSections.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7164705210059143157, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -12647,7 +12687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7164705210059143159, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
       propertyPath: m_Name
-      value: Level Flipper
+      value: Level Builder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3299fedc11072e843a8b84d279cae5ec, type: 3}
@@ -12709,6 +12749,10 @@ PrefabInstance:
     - target: {fileID: 7438063407789804965, guid: e307da7158baa3b49b7df86b1e5a75f9, type: 3}
       propertyPath: m_Name
       value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 7438063407789804965, guid: e307da7158baa3b49b7df86b1e5a75f9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e307da7158baa3b49b7df86b1e5a75f9, type: 3}

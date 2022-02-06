@@ -18,31 +18,21 @@ public class LevelBuilderEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        // Update the representation of the properties
-        serializedObject.Update();
-
-
-        // Draw property fields
-        EditorGUILayout.PropertyField(levelParentObject);
-        EditorGUILayout.PropertyField(flipBlackAndWhite);
-        EditorGUILayout.PropertyField(flippedLevel);
+        DrawDefaultInspector();
         
         EditorGUILayout.Space();
         EditorGUILayout.Space();
 
 
         // Draw buttons to run functions
-        if (GUILayout.Button("Build Flipped Level"))
+        if (GUILayout.Button("Build Flipped Level(s)"))
         {
             (serializedObject.targetObject as LevelBuilder).FlipLevel();
         }
 
-        if (GUILayout.Button("Delete Flipped Level"))
+        if (GUILayout.Button("Delete Flipped Level(s)"))
         {
             (serializedObject.targetObject as LevelBuilder).DeleteFlippedLevel();
         }
-
-        // Apply any changes to the inspector
-        serializedObject.ApplyModifiedProperties();
     }
 }
